@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="定义文档关键词，用于搜索引擎">
+    <meta name="description" content="定义web页面描述">
+    <meta name="author" content="tk">
+    <title>rem适配</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            font-size: 0.2rem;
+        }
+    </style>
+</head>
+<body>
+<div>
+    测试字体
+</div>
+</body>
+<script>
+    //设计图宽度/100
+    /*
+    * rem适配
+    * @params
+    * number 默认750的设计图 = 7.5
+    * */
+    function remFit(number = 7.5) {
+        document.documentElement.style.fontSize = document.documentElement.offsetWidth / number * window.devicePixelRatio + 'px';
+    }
+    remFit()
+    window.addEventListener('resize',function () {
+        remFit();
+    },false)
+</script>
+</html>

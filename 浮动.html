@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="keywords" content="定义文档关键词，用于搜索引擎">
+  <meta name="description" content="定义web页面描述">
+  <meta name="author" content="tk">
+  <title>浮动</title>
+</head>
+<style>
+  .fudong .a {
+    float: left;
+  }
+
+  .fudong .b {
+    float: right;
+  }
+
+  .fudong:after {
+    content: '';
+    clear: both;
+    display: block;
+  }
+
+  /*.fudong{*/
+  /*  overflow: hidden;*/
+  /*}*/
+  .fudong2 {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .fudong2 > div {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .fudong2:after {
+    content: '';
+    display: block;
+    height: 100%;
+  }
+</style>
+<body>
+<div class="fudong">
+  <div class="a">fudong</div>
+  <div class="b">1111111111</div>
+</div>
+<div>22222222</div>
+<div class="fudong2">
+  <div>1</div>
+</div>
+<div>333333</div>
+<video src="https://www.xiguayy5.com/860f5a0d-0334-429c-866b-80dcdb0f8220"></video>
+</body>
+<script>
+
+</script>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="定义文档关键词，用于搜索引擎">
+    <meta name="description" content="定义web页面描述">
+    <meta name="author" content="tk">
+    <title>css_边框渐变</title>
+    <style>
+        .gradualChange{
+            width: 300px;
+            height: 300px;
+            border:1px solid transparent;
+            border-radius: 5px;
+            border-image-source: linear-gradient(#000,#fff,#fff,#000);
+            border-image-slice: 20;
+            margin: 0 auto;
+        }
+        .border-test {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            border: 1px solid transparent;
+            background-color: #fff;
+            border-radius: 10px;
+            background-clip: padding-box;
+            margin: 0 auto;
+        }
+        .border-test::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            bottom: -1px;
+            left: -1px;
+            border-radius: 11px;
+            background: linear-gradient(#000 0%, #fff 30%,#fff 70%,#000 100%);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="gradualChange">
+    asd s
+</div>
+<br>
+<hr>
+<br>
+<div class="border-test">
+    safsdf
+</div>
+
+</body>
+</html>

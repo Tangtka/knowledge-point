@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="定义文档关键词，用于搜索引擎">
+    <meta name="description" content="定义web页面描述">
+    <meta name="author" content="tk">
+    <title>倒计时</title>
+
+</head>
+<body>
+<div id="app"></div>
+</body>
+<script>
+    //倒计时插件
+    function DataTimer(data) {
+        this.data = data;
+        var that = this;
+        return setInterval(function () {that.init();},1000);
+    };
+    DataTimer.prototype = {
+        countDown:function(time) {
+            var day, hour, minute, second;
+            if (time > 0) {
+                day = Math.floor(time / 1000 / 60 / 60 / 24);
+                hour = Math.floor(time / 1000 / 60 / 60 % 24);
+                minute = Math.floor(time / 1000 / 60 % 60);
+                second = Math.floor(time / 1000 % 60);
+                if (hour < 10) {
+                    hour = '0' + hour;
+                }
+                if (minute < 10) {
+                    minute = '0' + minute;
+                }
+                if (second < 10) {
+                    second = '0' + second;
+                }
+                if(day ===  0){
+                    document.getElementById(this.data.id).innerHTML = hour + ' : ' + minute + ' : ' + second;
+                }else{
+                    document.getElementById(this.data.id).innerHTML = day + ' 天 ' + hour + ' : ' + minute + ' : ' + second;
+                }
+            } else {
+                this.callback();
+            }
+        },
+        callback:function() {
+            this.data.callback()
+        },
+        init:function() {
+            //获取当前时间/毫秒数
+            var nowTime = new Date().getTime();
+            var oldTime = new Date(this.data.dateAndTime).getTime();
+            this.countDown(oldTime - nowTime);
+        },
+    };
+    /*var qq =  new DataTimer({
+        dateAndTime:'2019-12-25 17:18:00', //时间格式 2018-12-25 17:18:00
+        callback:function () {console.log('到了到了...')} //时间到了的回调
+    });*/
+
+    //测试是否能关闭
+    //setTimeout(function () {clearInterval(qq);},3000);
+
+    new DataTimer({
+        id:"app",
+        dateAndTime:'2019-12-25 17:18:00', //时间格式 2018-12-25 17:18:00
+        callback:function () {console.log('到了到了...')} //时间到了的回调
+    });
+</script>
+</html>

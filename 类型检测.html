@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="keywords" content="定义文档关键词，用于搜索引擎">
+  <meta name="description" content="定义web页面描述">
+  <meta name="author" content="tk">
+  <title>类型检测</title>
+</head>
+<body>
+<script>
+  console.log("测试number:"+typeof 1);
+  console.log("测试string:"+typeof "str");
+  console.log("测试false:"+typeof false);
+  console.log("测试null:"+typeof null);
+  console.log("测试undefined:"+typeof undefined);
+  console.log("测试Object:"+typeof new Object());
+  console.log("测试Array:"+typeof new Array());
+  console.log("看看typeof NaN是啥:"+typeof NaN);
+  console.log("我想看看数组［1，2，3]类型:"+typeof [1,2,3]);
+  console.log("看看function是啥:"+typeof function(){});
+  console.log("测试Object instanceof:"+ new Object() instanceof Object);
+
+  console.log(Object.prototype.toString.call(''));
+  console.log(Object.prototype.toString.call(1));
+  console.log(Object.prototype.toString.call(true));
+  console.log(Object.prototype.toString.call(new Object()));
+  console.log(Object.prototype.toString.call(new Array()));
+  console.log(Object.prototype.toString.call(NaN));
+</script>
+</body>
+</html>

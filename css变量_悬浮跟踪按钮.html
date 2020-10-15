@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="定义文档关键词，用于搜索引擎">
+    <meta name="description" content="定义web页面描述">
+    <meta name="author" content="tk">
+    <title>css变量 悬浮跟踪按钮</title>
+    <style>
+        .btn{
+            background-color: #f0d0ff;
+            color: #ffffff;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            width: 500px;
+            font-size: 20px;
+            border-radius: 5px;
+            margin: 100px auto;
+            position: relative;
+        }
+        .btn::before {
+             --size: 0;
+             position: absolute;
+             left: var(--x);
+             top: var(--y);
+             width: var(--size);
+             height: var(--size);
+             background-image: radial-gradient(circle closest-side, rgba(255,255,255,0.3), transparent);
+             content: "";
+             transform: translate3d(-50%, -50%, 0);
+         }
+        .btn:hover::before {
+             --size: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="btn" onmousemove="move()">
+    css变量 悬浮跟踪按钮
+</div>
+<div class="btn" onmousemove="move()">
+    css变量 悬浮跟踪按钮
+</div>
+<div class="btn" onmousemove="move()">
+    css变量 悬浮跟踪按钮
+</div>
+<div class="btn" onmousemove="move()">
+    css变量 悬浮跟踪按钮
+</div>
+</body>
+<script>
+    function  move() {
+        const e = window.event;
+        const x = e.pageX - e.target.offsetLeft;
+        const y = e.pageY - e.target.offsetTop;
+        e.target.style.setProperty("--x", `${x}px`);
+        e.target.style.setProperty("--y", `${y}px`);
+    }
+</script>
+</html>

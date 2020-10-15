@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="定义文档关键词，用于搜索引擎">
+    <meta name="description" content="定义web页面描述">
+    <meta name="author" content="tk">
+    <title>css tab下划线滚动</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul, li {
+            list-style: none
+        }
+
+        a {
+            color: #FF394A;
+            text-decoration: none;
+        }
+
+        .header {
+            width: 100%;
+            background-color: #FFD2DC;
+        }
+
+        .header ul {
+            width: 1240px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .header ul li {
+            flex: 1;
+            text-align: center;
+            padding: 20px 0;
+            cursor: pointer;
+        }
+
+        .header ul li.move {
+            padding: 0;
+            position: absolute;
+            width: 20%;
+            height: 3px;
+            left: 0;
+            bottom: 0;
+            background-color: #FF394A;
+            transition: 0.5s;
+        }
+
+    </style>
+</head>
+<body>
+<div class="header">
+    <ul>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">最新活动</a></li>
+        <li><a href="#">项目介绍</a></li>
+        <li><a href="#">爱心社区</a></li>
+        <li><a href="#">关于我们</a></li>
+        <li class="move"></li>
+    </ul>
+</div>
+</body>
+<script>
+    // 获取li
+    let liList = document.querySelectorAll('.header ul li');
+
+    //计算下划线长度
+    let move = document.querySelector('.move');
+    let moveWidth = 100 / (liList.length - 1);
+    move.style.width = moveWidth + '%';
+
+    //当前选中第几个
+    let index = 0;
+
+    //添加事件
+    for (let i = 0, l = liList.length - 1; i < l; i++) {
+        liList[i].addEventListener('mouseover', () => {
+            move.style.left = moveWidth * i + '%';
+        });
+        liList[i].addEventListener('mouseout', () => {
+            move.style.left = moveWidth * index + '%';
+            console.log(1);
+        });
+        liList[i].addEventListener('click', () => {
+            index = i;
+        });
+    }
+</script>
+</html>

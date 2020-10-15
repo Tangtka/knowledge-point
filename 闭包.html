@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="keywords" content="定义文档关键词，用于搜索引擎">
+  <meta name="description" content="定义web页面描述">
+  <meta name="author" content="tk">
+  <title>闭包</title>
+</head>
+<body>
+<button onclick="result()">result</button>
+<button onclick="nAdd()">nAdd</button>
+<button onclick="f2()">销毁闭包</button>
+<button onclick="object.getNameFunc()()">getNameFunc</button>
+<button onclick="object.getNameFunc1()">getNameFunc1</button>
+</body>
+<script>
+  // 闭包指有权访问一个函数作用域中的变量的函数 所创建对应驻扎在内存中不会被销毁（除非手动销毁）原因：作用域链一直在引用活动对象
+  function f1(num) {
+    let n = num;
+    nAdd = function () {
+      n += 1
+    }
+    function f2() {
+      alert(n);
+    }
+    return f2;
+  }
+  let result = f1(20);
+  //result = null //可销毁闭包
+  function f2() {
+    result = null
+  }
+  // result(); // 999
+  // nAdd();
+  // result(); // 10003
+
+  var name = "The Window";
+  var object = {
+    name : "My Object",
+    getNameFunc : function(){
+      return function(){
+        alert(this.name)
+        return this.name;
+      };
+    },
+    getNameFunc1:null
+  };
+  function getNameFunc1() {
+    alert(this.name)
+  }
+  object.getNameFunc1 = getNameFunc1;
+
+</script>
+</html>

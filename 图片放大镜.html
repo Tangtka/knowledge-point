@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="定义文档关键词，用于搜索引擎">
+    <meta name="description" content="定义web页面描述">
+    <meta name="author" content="tk">
+    <title>图片放大镜</title>
+</head>
+<body>
+<div id="demo"></div>
+<div id="demo1"></div>
+</body>
+<script>
+    /*
+    * MGFun
+    * @params {}
+    * id 容器id 默认 magnifying_box
+    * smallImgWidth 小图宽度 默认300
+    * smallImgHeight 小图高度 默认400
+    * mark 遮罩大小 默认100
+    * magnification 放大倍数 默认4
+    * zIndex 层级 默认1
+    * CreateDOM 创建DOM元素*/
+    function MGFun(data = {}) {
+        this.id = data.id;
+        this.smallImgWidth = data.smallImgWidth || 300;
+        this.smallImgHeight = data.smallImgHeight || 400;
+        this.mark = data.mark || {w: 100, h: 100};
+        this.magnification = data.magnification || 4;
+        this.imgUrl = data.imgUrl || 'img/magnifyingGlass.jpg';
+        this.zIndex = data.zIndex || 1;
+        this.init();
+    }
+
+    MGFun.prototype.init = function () {
+        this.createDOM();
+    };
+    MGFun.prototype.createDOM = function () {
+        var box = document.getElementById(this.id);
+        var small_div = document.createElement('div');
+        var samll_img = document.createElement('img');
+        var mark = document.createElement('div');
+        var big_div = document.createElement('div');
+        var big_img = document.createElement('img');
+
+        box.style.width = this.smallImgWidth + 'px';
+        box.style.height = this.smallImgHeight + 'px';
+        box.style.position = 'relative';
+
+        small_div.style.width = this.smallImgWidth + 'px';
+        small_div.style.height = this.smallImgHeight + 'px';
+        small_div.style.position = 'relative';
+
+        samll_img.style.width = this.smallImgWidth + 'px';
+        samll_img.style.height = this.smallImgHeight + 'px';
+        samll_img.style.display = 'block';
+        samll_img.src = this.imgUrl;
+
+        mark.style.width = this.mark.w + 'px';
+        mark.style.height = this.mark.h + 'px';
+        mark.style.position = 'absolute';
+        mark.style.left = 0;
+        mark.style.top = 0;
+        mark.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+        mark.style.display = 'none';
+
+        big_div.style.width = this.mark.w * this.magnification + 'px';
+        big_div.style.height = this.mark.h * this.magnification + 'px';
+        big_div.style.position = 'absolute';
+        big_div.style.left = this.smallImgWidth + 10 + 'px';
+        big_div.style.top = 0;
+        big_div.style.display = 'none';
+        big_div.style.overflow = 'hidden';
+        big_div.style.zIndex = this.zIndex;
+
+        big_img.style.width = this.smallImgWidth * this.magnification + 'px';
+        big_img.style.height = this.smallImgHeight * this.magnification + 'px';
+        big_img.style.position = 'absolute';
+        big_img.style.left = 0;
+        big_img.style.top = 0;
+        big_img.style.display = 'block';
+        big_img.src = this.imgUrl;
+
+        small_div.append(samll_img);
+        small_div.append(mark);
+        big_div.append(big_img);
+        box.append(small_div);
+        box.append(big_div);
+
+        this.mouseEvent({
+            box: box,
+            smallDiv: small_div,
+            smallImg: samll_img,
+            mark: mark,
+            bigDiv: big_div,
+            bigImg: big_img,
+            magnification:this.magnification,
+        });
+
+    };
+
+    MGFun.prototype.mouseEvent = function (el) {
+        el.smallDiv.addEventListener('mouseover', function () {
+            el.mark.style.display = 'block';
+            el.bigDiv.style.display = 'block';
+        });
+
+        el.smallDiv.addEventListener('mouseout', function () {
+            el.mark.style.display = 'none';
+            el.bigDiv.style.display = 'none';
+        });
+
+        el.smallDiv.addEventListener('mousemove', function (e) {
+            e = e || window.event;
+
+            var x = e.pageX - el.box.offsetLeft - el.mark.offsetWidth / 2,
+                y = e.pageY - el.box.offsetTop - el.mark.offsetHeight / 2;
+
+            x < 0 ? x = 0 : x;
+            y < 0 ? y = 0 : y;
+
+            x > el.smallImg.offsetWidth - el.mark.offsetWidth ? x = el.smallImg.offsetWidth - el.mark.offsetWidth : x;
+            y > el.smallImg.offsetHeight - el.mark.offsetHeight ? y = el.smallImg.offsetHeight - el.mark.offsetHeight : y;
+
+            el.mark.style.left = x + 'px';
+            el.mark.style.top = y + 'px';
+
+            el.bigImg.style.left = -x * el.magnification + 'px';
+            el.bigImg.style.top = -y * el.magnification + 'px';
+        });
+
+    };
+
+
+    new MGFun({
+        id: 'demo',
+        smallImgWidth: 600,
+        smallImgHeight: 400,
+        mark: {
+            w: 100,
+            h: 50
+        },
+        magnification: 10,
+        imgUrl: 'http://file.pegasus.org.cn/overall-admin_1583742671021.jpg',
+        zIndex: 1
+    });
+
+    new MGFun({
+        id: 'demo1',
+        imgUrl: 'http://file.pegasus.org.cn/overall-admin_1579161746098.jpg',
+    })
+</script>
+</html>

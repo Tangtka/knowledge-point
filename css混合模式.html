@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="定义文档关键词，用于搜索引擎">
+    <meta name="description" content="定义web页面描述">
+    <meta name="author" content="tk">
+    <title>css混合模式模式</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    html, body {
+        width: 100%;
+        cursor: none;
+        background-color: #fff;
+    }
+    .cursor{
+        position: fixed;
+        left: 0;
+        top: 0;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        transform: translate(-50%,-50%);
+        mix-blend-mode: exclusion;
+        background-color: #fff;
+        z-index: 99999999999;
+    }
+    .cursor:after {
+        display: block;
+        content: "";
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        opacity: 1;
+    }
+</style>
+<body>
+<div id="cursor" class="cursor"></div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+<div style="font-size: 30px;font-weight: bold;">https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg</div>
+</body>
+<script>
+    window.onmousemove = function (e) {
+        let mouseX = e.x,mouseY = e.y,dom = document.getElementById('cursor');
+        dom.style.left = mouseX +'px';
+        dom.style.top = mouseY +'px';
+    }
+</script>
+</html>

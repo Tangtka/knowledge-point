@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="keywords" content="定义文档关键词，用于搜索引擎">
+  <meta name="description" content="定义web页面描述">
+  <meta name="author" content="tk">
+  <title>ajax</title>
+</head>
+<body>
+
+</body>
+<script>
+  /*
+* 创建 XMLHttpRequest 对象
+* method: get or post
+* url: 请求链接
+* async: 是否异步
+* */
+  var xml = null;
+  var method = "get";
+  var url = "https://api.apiopen.top/musicRankings";
+  var async = true;
+
+
+  function ajax() {
+    if (window.XMLHttpRequest) { //ie7 +
+      xml = new XMLHttpRequest();
+    } else { //ie 5 or 6
+      xml = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xml.open(method, url, async);
+
+    /*
+    * onreadystatechange 存储函数（或函数名），每当 readyState 属性改变时，就会调用该函数。
+    * */
+    xml.onreadystatechange = function () {
+      /*
+      * readyState
+      * 0: 请求未初始化
+      * 1: 服务器连接已建立
+      * 2: 请求已接收
+      * 3: 请求处理中
+      * 4: 请求已完成，且响应已就绪
+      * status
+      * 200: "OK"
+      * 404: 未找到页面
+      * */
+      if (xml.readyState == 4 && xml.status == 200) {
+        console.log(JSON.parse(xml.responseText));
+      }
+
+    };
+
+    /*
+    * 如果需要像 HTML 表单那样 POST 数据，请使用 setRequestHeader() 来添加 HTTP 头。然后在send() 方法中规定您希望发送的数据：
+    * xml.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    * xml.send("fname=Bill&lname=Gates");
+    * */
+
+    xml.send();
+  }
+
+  ajax();
+
+</script>
+</html>

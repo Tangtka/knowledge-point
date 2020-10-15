@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="定义文档关键词，用于搜索引擎">
+    <meta name="description" content="定义web页面描述">
+    <meta name="author" content="tk">
+    <title>css蛇形边框</title>
+    <style>
+        .div{
+            width: 200px;
+            height: 200px;
+            background-color: #f0d0ff;
+            position: relative;
+        }
+
+        .div:before,.div:after{
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            border:solid 2px #00fff7;
+            animation: div 2s linear infinite;
+        }
+        .div:after{
+            border:solid 2px #fff000;
+            animation: div 2s linear infinite -1s;
+        }
+        @keyframes div {
+            0%,100%{
+                clip: rect(0px,200px,2px,0px);
+            }
+            25%{
+                clip: rect(0px,200px,200px,198px);
+            }
+            50%{
+                clip: rect(198px,200px,200px,0px);
+            }
+            75%{
+                clip: rect(0px,2px,200px,0px);
+            }
+
+        }
+
+    </style>
+</head>
+<body>
+<div class="div"></div>
+</body>
+</html>

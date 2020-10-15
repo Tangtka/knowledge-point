@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="定义文档关键词，用于搜索引擎">
+    <meta name="description" content="定义web页面描述">
+    <meta name="author" content="tk">
+    <title>css_loading.html</title>
+</head>
+<style>
+    *{margin:0;padding:0}
+    .div{width:150px;height:40px;margin:200px auto;text-align:center}
+    .div>span{width:10px;height:40px;display:inline-block;background-color:#ccccff;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;-webkit-animation:span 0.5s infinite linear alternate;-moz-animation:span 0.5s infinite linear alternate;-o-animation:span 0.5s infinite linear alternate;animation:span 0.5s infinite linear alternate;-webkit-transform:scaleY(0.4);-ms-transform:scaleY(0.4);-moz-transform:scaleY(0.4);-o-transform:scaleY(0.4);transform:scaleY(0.4)}
+    .div>span:nth-child(1){-webkit-animation-delay:-1.2s;-moz-animation-delay:-1.2s;-o-animation-delay:-1.2s;animation-delay:-1.2s}
+    .div>span:nth-child(2){-webkit-animation-delay:-1.1s;-moz-animation-delay:-1.1s;-o-animation-delay:-1.1s;animation-delay:-1.1s}
+    .div>span:nth-child(3){-webkit-animation-delay:-1s;-moz-animation-delay:-1s;-o-animation-delay:-1s;animation-delay:-1s}
+    .div>span:nth-child(4){-webkit-animation-delay:-0.9s;-moz-animation-delay:-0.9s;-o-animation-delay:-0.9s;animation-delay:-0.9s}
+    .div>span:nth-child(5){-webkit-animation-delay:-0.8s;-moz-animation-delay:-0.8s;-o-animation-delay:-0.8s;animation-delay:-0.8s}
+    .div>span:nth-child(6){-webkit-animation-delay:-0.7s;-moz-animation-delay:-0.7s;-o-animation-delay:-0.7s;animation-delay:-0.7s}
+    .div>span:nth-child(7){-webkit-animation-delay:-0.6s;-moz-animation-delay:-0.6s;-o-animation-delay:-0.6s;animation-delay:-0.6s}
+    .div>span:nth-child(8){-webkit-animation-delay:-0.5s;-moz-animation-delay:-0.5s;-o-animation-delay:-0.5s;animation-delay:-0.5s}
+    .div>span:nth-child(9){-webkit-animation-delay:-0.4s;-moz-animation-delay:-0.4s;-o-animation-delay:-0.4s;animation-delay:-0.4s}
+    .div>span:nth-child(10){-webkit-animation-delay:-0.3s;-moz-animation-delay:-0.3s;-o-animation-delay:-0.3s;animation-delay:-0.3s}
+    @-webkit-keyframes span{from{-webkit-transform:scaleY(0.3);transform:scaleY(0.3)}
+        to{-webkit-transform:scaleY(1.0);transform:scaleY(1.0)}
+    }
+    @-moz-keyframes span{from{-webkit-transform:scaleY(0.3);-moz-transform:scaleY(0.3);transform:scaleY(0.3)}
+        to{-webkit-transform:scaleY(1.0);-moz-transform:scaleY(1.0);transform:scaleY(1.0)}
+    }
+    @-o-keyframes span{from{-webkit-transform:scaleY(0.3);-o-transform:scaleY(0.3);transform:scaleY(0.3)}
+        to{-webkit-transform:scaleY(1.0);-o-transform:scaleY(1.0);transform:scaleY(1.0)}
+    }
+    @keyframes span{from{-webkit-transform:scaleY(0.3);-moz-transform:scaleY(0.3);-o-transform:scaleY(0.3);transform:scaleY(0.3)}
+        to{-webkit-transform:scaleY(1.0);-moz-transform:scaleY(1.0);-o-transform:scaleY(1.0);transform:scaleY(1.0)}
+    }
+    /*-----------------------------------------*/
+    .div1{width:36px;height:36px;margin:200px auto;-webkit-border-radius:18px;-moz-border-radius:18px;border-radius:18px;position:relative;-webkit-animation:div1 1.5s linear infinite;-moz-animation:div1 1.5s linear infinite;-o-animation:div1 1.5s linear infinite;animation:div1 1.5s linear infinite}
+    .div1>span{width:4px;height:15px;display:inline-block;background-color:#ccccff;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;position:absolute}
+    .div1>span:nth-child(1){left:16px;top:0;opacity:0.8}
+    .div1>span:nth-child(2){left:16px;bottom:-1px;opacity:0.4}
+    .div1>span:nth-child(3){top:11px;left:5px;-webkit-transform:rotate(90deg);-ms-transform:rotate(90deg);-moz-transform:rotate(90deg);-o-transform:rotate(90deg);transform:rotate(90deg);opacity:0.6}
+    .div1>span:nth-child(4){top:11px;right:5px;-webkit-transform:rotate(90deg);-ms-transform:rotate(90deg);-moz-transform:rotate(90deg);-o-transform:rotate(90deg);transform:rotate(90deg);opacity:0.2}
+    .div1>span:nth-child(5){bottom:2px;left:8px;-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg);opacity:0.5}
+    .div1>span:nth-child(6){bottom:2px;right:8px;-webkit-transform:rotate(134deg);-ms-transform:rotate(134deg);-moz-transform:rotate(134deg);-o-transform:rotate(134deg);transform:rotate(134deg);opacity:0.3}
+    .div1>span:nth-child(7){top:3px;left:8px;-webkit-transform:rotate(134deg);-ms-transform:rotate(134deg);-moz-transform:rotate(134deg);-o-transform:rotate(134deg);transform:rotate(134deg);opacity:0.7}
+    .div1>span:nth-child(8){top:3px;right:8px;-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg);opacity:0.1}
+    @-webkit-keyframes div1{from{-webkit-transform:rotate(0deg);transform:rotate(0deg)}
+        to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}
+    }
+    @-moz-keyframes div1{from{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);transform:rotate(0deg)}
+        to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);transform:rotate(360deg)}
+    }
+    @-o-keyframes div1{from{-webkit-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg)}
+        to{-webkit-transform:rotate(360deg);-o-transform:rotate(360deg);transform:rotate(360deg)}
+    }
+    @keyframes div1{from{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg)}
+        to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);transform:rotate(360deg)}
+    }
+    /*-----------------------------------------*/
+    .div2{width:50px;height:50px;margin:200px auto;position:relative;-webkit-animation:div2 2s linear infinite;-moz-animation:div2 2s linear infinite;-o-animation:div2 2s linear infinite;animation:div2 2s linear infinite}
+    .div2>span{width:8px;height:8px;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;background-color:#ccccff;display:inline-block;position:absolute}
+    .div2>span:nth-child(1){left:21px;top:5px;opacity:0.9}
+    .div2>span:nth-child(2){top:21px;right:5px;opacity:0.3}
+    .div2>span:nth-child(3){left:21px;bottom:5px;opacity:0.5}
+    .div2>span:nth-child(4){left:5px;top:21px;opacity:0.7}
+    .div2>span:nth-child(5){left:10px;top:10px;opacity:0.8}
+    .div2>span:nth-child(6){top:10px;right:10px;opacity:0.2}
+    .div2>span:nth-child(7){left:10px;bottom:10px;opacity:0.6}
+    .div2>span:nth-child(8){right:10px;bottom:10px;opacity:0.4}
+    @-webkit-keyframes div2{from{-webkit-transform:rotate(0deg);transform:rotate(0deg)}
+        to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}
+    }
+    @-moz-keyframes div2{from{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);transform:rotate(0deg)}
+        to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);transform:rotate(360deg)}
+    }
+    @-o-keyframes div2{from{-webkit-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg)}
+        to{-webkit-transform:rotate(360deg);-o-transform:rotate(360deg);transform:rotate(360deg)}
+    }
+    @keyframes div2{from{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg)}
+        to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);transform:rotate(360deg)}
+    }
+
+    /*-------------------------------------------*/
+    .div3{width:50px;height:50px;margin:200px auto;position:relative;-webkit-animation:div3 1s linear infinite;-moz-animation:div3 1s linear infinite;-o-animation:div3 1s linear infinite;animation:div3 1s linear infinite}
+    .div3>span{width:4px;height:10px;position:absolute;display:inline-block;background-color:#9999ff;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px}
+    .div3>span:nth-child(1){top:0;left:23px}
+    .div3>span:nth-child(2){right:13px;top:3px;-webkit-transform:rotate(30deg);-moz-transform:rotate(30deg);-ms-transform:rotate(30deg);-o-transform:rotate(30deg);transform:rotate(30deg);opacity:0.01}
+    .div3>span:nth-child(3){right:6px;top:10px;-webkit-transform:rotate(60deg);-moz-transform:rotate(60deg);-ms-transform:rotate(60deg);-o-transform:rotate(60deg);transform:rotate(60deg);opacity:0.1}
+    .div3>span:nth-child(4){top:20px;right:3px;-webkit-transform:rotate(90deg);-moz-transform:rotate(90deg);-ms-transform:rotate(90deg);-o-transform:rotate(90deg);transform:rotate(90deg);opacity:0.19}
+    .div3>span:nth-child(5){right:6px;bottom:10px;-webkit-transform:rotate(120deg);-moz-transform:rotate(120deg);-ms-transform:rotate(120deg);-o-transform:rotate(120deg);transform:rotate(120deg);opacity:0.28}
+    .div3>span:nth-child(6){right:13px;bottom:3px;-webkit-transform:rotate(150deg);-moz-transform:rotate(150deg);-ms-transform:rotate(150deg);-o-transform:rotate(150deg);transform:rotate(150deg);opacity:0.37}
+    .div3>span:nth-child(7){bottom:0;left:23px;opacity:0.46}
+    .div3>span:nth-child(8){left:13px;bottom:3px;-webkit-transform:rotate(210deg);-moz-transform:rotate(210deg);-ms-transform:rotate(210deg);-o-transform:rotate(210deg);transform:rotate(210deg);opacity:0.55}
+    .div3>span:nth-child(9){left:6px;bottom:10px;-webkit-transform:rotate(240deg);-moz-transform:rotate(240deg);-ms-transform:rotate(240deg);-o-transform:rotate(240deg);transform:rotate(240deg);opacity:0.64}
+    .div3>span:nth-child(10){top:20px;left:3px;-webkit-transform:rotate(90deg);-moz-transform:rotate(90deg);-ms-transform:rotate(90deg);-o-transform:rotate(90deg);transform:rotate(90deg);opacity:0.73}
+    .div3>span:nth-child(11){left:6px;top:10px;-webkit-transform:rotate(300deg);-moz-transform:rotate(300deg);-ms-transform:rotate(300deg);-o-transform:rotate(300deg);transform:rotate(300deg);opacity:0.82}
+    .div3>span:nth-child(12){left:13px;top:3px;-webkit-transform:rotate(330deg);-moz-transform:rotate(330deg);-ms-transform:rotate(330deg);-o-transform:rotate(330deg);transform:rotate(330deg);opacity:0.91}
+    @-webkit-keyframes div3{from{-webkit-transform:rotate(0deg);transform:rotate(0deg)}
+        to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}
+    }
+    @-moz-keyframes div3{from{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);transform:rotate(0deg)}
+        to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);transform:rotate(360deg)}
+    }
+    @-o-keyframes div3{from{-webkit-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg)}
+        to{-webkit-transform:rotate(360deg);-o-transform:rotate(360deg);transform:rotate(360deg)}
+    }
+    @keyframes div3{from{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg)}
+        to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);transform:rotate(360deg)}
+    }
+
+    /*-------------------------------------------*/
+    .div4{width:160px;height:40px;margin:200px auto;text-align:center}
+    .div4>span{width:10px;height:40px;display:inline-block;background-color:#ccccff;-webkit-animation:div4 1s linear infinite;-moz-animation:div4 1s linear infinite;-o-animation:div4 1s linear infinite;animation:div4 1s linear infinite}
+    .div4>span:nth-child(1){-webkit-animation-delay:0.1s;-moz-animation-delay:0.1s;-o-animation-delay:0.1s;animation-delay:0.1s}
+    .div4>span:nth-child(2){-webkit-animation-delay:0.2s;-moz-animation-delay:0.2s;-o-animation-delay:0.2s;animation-delay:0.2s}
+    .div4>span:nth-child(3){-webkit-animation-delay:0.3s;-moz-animation-delay:0.3s;-o-animation-delay:0.3s;animation-delay:0.3s}
+    .div4>span:nth-child(4){-webkit-animation-delay:0.4s;-moz-animation-delay:0.4s;-o-animation-delay:0.4s;animation-delay:0.4s}
+    .div4>span:nth-child(5){-webkit-animation-delay:0.5s;-moz-animation-delay:0.5s;-o-animation-delay:0.5s;animation-delay:0.5s}
+    .div4>span:nth-child(6){-webkit-animation-delay:0.6s;-moz-animation-delay:0.6s;-o-animation-delay:0.6s;animation-delay:0.6s}
+    .div4>span:nth-child(7){-webkit-animation-delay:0.7s;-moz-animation-delay:0.7s;-o-animation-delay:0.7s;animation-delay:0.7s}
+    .div4>span:nth-child(8){-webkit-animation-delay:0.8s;-moz-animation-delay:0.8s;-o-animation-delay:0.8s;animation-delay:0.8s}
+    .div4>span:nth-child(9){-webkit-animation-delay:0.9s;-moz-animation-delay:0.9s;-o-animation-delay:0.9s;animation-delay:0.9s}
+    .div4>span:nth-child(10){-webkit-animation-delay:1s;-moz-animation-delay:1s;-o-animation-delay:1s;animation-delay:1s}
+    .div4>span:nth-child(11){-webkit-animation:none;-moz-animation:none;-o-animation:none;animation:none;opacity:0}
+    @-webkit-keyframes div4{0%{height:10px} 50%{height:40px} 100%{height:10px} }
+    @-moz-keyframes div4{0%{height:10px} 50%{height:40px} 100%{height:10px} }
+    @-o-keyframes div4{0%{height:10px} 50%{height:40px} 100%{height:10px} }
+    @keyframes div4{0%{height:10px} 50%{height:40px} 100%{height:10px} }
+
+    /*--------------------------------------------------*/
+    .div5{width:200px;height:200px;margin:200px auto;position:relative}
+    .div5>div.span1{position:absolute;border:solid 4px #ccccff;width:192px;height:192px;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;left:0;top:0}
+    .div5>div.span2{position:absolute;border:solid 2px #ccccff;width:180px;height:180px;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;left:8px;top:8px}
+    .div5>div.span3{position:absolute;background-color:#ccccff;width:170px;height:170px;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;left:15px;top:15px;overflow:hidden}
+    .div5>div.span3 span:nth-child(1){position:absolute;background-color:#ffffff;width:400px;height:400px;-webkit-border-radius:45%;-moz-border-radius:45%;border-radius:45%;left:-115px;bottom:0;-webkit-animation:div5 4s linear infinite;-moz-animation:div5 4s linear infinite;-o-animation:div5 4s linear infinite;animation:div5 4s linear infinite}
+    .div5>div.span3 span:nth-child(2){position:absolute;background-color:#ffffff;width:400px;height:400px;-webkit-border-radius:45%;-moz-border-radius:45%;border-radius:45%;left:-115px;bottom:0;opacity:0.5;-webkit-transform:rotate(40deg);-moz-transform:rotate(40deg);-ms-transform:rotate(40deg);-o-transform:rotate(40deg);transform:rotate(40deg);-webkit-animation:div5-1 4s linear infinite;-moz-animation:div5-1 4s linear infinite;-o-animation:div5-1 4s linear infinite;animation:div5-1 4s linear infinite}
+    .div5>div.span3 span:nth-child(3){position:absolute;width:170px;height:170px;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;line-height:170px;display:inline-block;color:#333333;text-align:center;font-size:40px;opacity:0.5}
+    .div5>div.span3 span:nth-child(1),.div5>div.span3 span:nth-child(2){bottom:10px;transition: 0.5s}
+    @-webkit-keyframes div5{from{-webkit-transform:rotate(0deg);transform:rotate(0deg)}
+        to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}
+    }
+    @-moz-keyframes div5{from{-moz-transform:rotate(0deg);transform:rotate(0deg)}
+        to{-moz-transform:rotate(360deg);transform:rotate(360deg)}
+    }
+    @-o-keyframes div5{from{-o-transform:rotate(0deg);transform:rotate(0deg)}
+        to{-o-transform:rotate(360deg);transform:rotate(360deg)}
+    }
+    @keyframes div5{from{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg)}
+        to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);transform:rotate(360deg)}
+    }
+    @-webkit-keyframes div5-1{from{-webkit-transform:rotate(40deg);transform:rotate(40deg)}
+        to{-webkit-transform:rotate(400deg);transform:rotate(400deg)}
+    }
+    @-moz-keyframes div5-1{from{-moz-transform:rotate(40deg);transform:rotate(40deg)}
+        to{-moz-transform:rotate(400deg);transform:rotate(400deg)}
+    }
+    @-o-keyframes div5-1{from{-o-transform:rotate(40deg);transform:rotate(40deg)}
+        to{-o-transform:rotate(400deg);transform:rotate(400deg)}
+    }
+    @keyframes div5-1{from{-webkit-transform:rotate(40deg);-moz-transform:rotate(40deg);-o-transform:rotate(40deg);transform:rotate(40deg)}
+        to{-webkit-transform:rotate(400deg);-moz-transform:rotate(400deg);-o-transform:rotate(400deg);transform:rotate(400deg)}
+    }
+
+    /*-----------------------------------------*/
+    .div6{width:50px;height:50px;margin:200px auto;position:relative;}
+    .div6>span{width:8px;height:8px;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;background-color:#ccccff;display:inline-block;position:absolute;animation:div6 0.96s ease infinite}
+    .div6>span:nth-child(1){left:21px;top:5px;animation-delay: 0.12s}
+    .div6>span:nth-child(6){top:10px;right:10px;animation-delay: 0.24s}
+    .div6>span:nth-child(2){top:21px;right:5px;animation-delay: 0.36s}
+    .div6>span:nth-child(8){right:10px;bottom:10px;animation-delay: 0.48s}
+    .div6>span:nth-child(3){left:21px;bottom:5px;animation-delay: 0.6s}
+    .div6>span:nth-child(7){left:10px;bottom:10px;animation-delay: 0.72s}
+    .div6>span:nth-child(4){left:5px;top:21px;animation-delay: 0.84s}
+    .div6>span:nth-child(5){left:10px;top:10px;animation-delay: 0.96s}
+    @keyframes div6{
+        0%{opacity: 0.2}
+        100%{opacity: 1}
+    }
+    /*----------css变量 加载条-----------*/
+    .div7{width:150px;height:40px;margin:200px auto;text-align:center}
+    .div7>span{
+        width:10px;
+        height:40px;
+        display:inline-block;
+        background-color:#ccccff;
+        --time: calc(var(--line-index) * 300ms);
+        border-radius: 3px;
+        animation: div7 0.5s var(--time) infinite linear alternate;
+    }
+    @-webkit-keyframes div7{
+        from{-webkit-transform:scaleY(0.2);transform:scaleY(0.2)}
+        to{-webkit-transform:scaleY(1.0);transform:scaleY(1.0)}
+    }
+
+</style>
+<body>
+<div class="div">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<!--------------------------------------------->
+<div class="div1">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<!--------------------------------------------->
+<div class="div2">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<!-------------------------------------------->
+<div class="div3">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<!---------------------------------------------->
+<div class="div4">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<!-------------------------------------------------->
+<div class="div5">
+    <div class="span1"></div>
+    <div class="span2"></div>
+    <div class="span3" id="span3">
+        <span></span>
+        <span></span>
+        <span id="num">0%</span>
+    </div>
+</div>
+<!--------------------------------------------->
+<div class="div6">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<!---------------css变量 加载条----------------------------->
+<div class="div7">
+    <span style="--line-index: 1"></span>
+    <span style="--line-index: 2"></span>
+    <span style="--line-index: 3"></span>
+    <span style="--line-index: 4"></span>
+    <span style="--line-index: 5"></span>
+    <span style="--line-index: 6"></span>
+    <span style="--line-index: 7"></span>
+    <span style="--line-index: 8"></span>
+    <span style="--line-index: 9"></span>
+    <span style="--line-index: 10"></span>
+</div>
+<!---------------css变量 加载条----------------------------->
+<div class="div8">
+    <span style="--line-index: 10"></span>
+    <span style="--line-index: 9"></span>
+    <span style="--line-index: 8"></span>
+    <span style="--line-index: 7"></span>
+    <span style="--line-index: 6"></span>
+    <span style="--line-index: 5"></span>
+    <span style="--line-index: 4"></span>
+    <span style="--line-index: 3"></span>
+    <span style="--line-index: 2"></span>
+    <span style="--line-index: 1"></span>
+</div>
+</body>
+<script>
+    // #ccccff  ffccff 9999ff
+    var num = document.getElementById("num");
+    var span3 = document.getElementById("span3").getElementsByTagName("span");
+    var q=0;l=170,w=0;
+    function Num() {
+        console.log(1)
+        q += Math.floor(Math.random()*10);
+        if(q < 180){
+            span3[0].style.bottom = q+"px";
+            span3[1].style.bottom = q+"px";
+            w = q/180*100;
+            num.innerText = w.toFixed(2)+"%";
+            setTimeout(Num,500)
+        }else if(q >= 180){
+            num.innerText = "100.00%";
+            span3[0].style.bottom = "180px";
+            span3[1].style.bottom = "180px";
+            return
+        }
+    };
+    Num();
+</script>
+</html>

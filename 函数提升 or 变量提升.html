@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="定义文档关键词，用于搜索引擎">
+    <meta name="description" content="定义web页面描述">
+    <meta name="author" content="tk">
+    <title>函数提升 or 变量提升</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    /*var a = 10;
+    function f() {
+        console.log(a);
+        var a = 20;
+    }
+    f();  //undefined*/
+
+    // 实际上运行顺序
+
+    var a;
+    function f1() {
+        var a;
+        console.log(a);
+        a = 20;
+    }
+    a = 10;
+    f1()
+
+    console.log(navigator.onLine)
+</script>
+</html>
