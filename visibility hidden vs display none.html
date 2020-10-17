@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="keywords" content="定义文档关键词，用于搜索引擎">
+  <meta name="description" content="定义web页面描述">
+  <meta name="author" content="tk">
+  <title>visibility hidden vs display none</title>
+</head>
+<body>
+<div style="display: none">
+  渲染 不占据位置
+</div>
+<div style="visibility: hidden">
+  渲染 占据1个位置
+</div>
+<div>
+  是否是继承属性：display不是继承属性，而visibility是继承属性，后代元素的visibility属性若存在则不会继承，若不存在则继承父元素visibility的值，意味着：父元素的visibility为hidden但是子元素的visibility为visible则子元素依旧可见，子元素visibility不存在则子元素不可见。而元素的display属性设为none其后整棵子树都不可见。
+  是否占据空间：使用display:none，在文档渲染时，该元素如同不存在（但依然存在文档对象模型树中）；而使用visibility :hidden，其占的空间会被空白占位。即一个（display:none）不会在渲染树中出现，一个（visibility :hidden）会。
+  页面相关属性改值后是否重新渲染：visibility :hidden不渲染；display:none渲染
+</div>
+</body>
+</html>
