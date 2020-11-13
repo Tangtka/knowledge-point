@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="keywords" content="定义文档关键词，用于搜索引擎">
+  <meta name="description" content="定义web页面描述">
+  <meta name="author" content="tk">
+  <title>拖拽</title>
+  <style>
+    html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f2f3f4;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .div1 {
+      width: 100px;
+      height: 100px;
+      background-color: #fff;
+      position: absolute;
+      left: 0;
+      top: 0;
+      box-sizing: border-box;
+      cursor: move;
+    }
+  </style>
+</head>
+<body>
+<div class="div1"></div>
+</body>
+<script>
+  let oneClickX = 0,
+    oneClickY = 0,
+    dom = document.querySelector('.div1'),
+    ww = document.documentElement.clientWidth || document.body.clientWidth,
+    hh = document.documentElement.clientHeight || document.body.clientHeight;
+
+  //元素被点击
+  dom.addEventListener('mousedown', function (e) {
+    oneClickX = e.clientX - dom.offsetLeft;
+    oneClickY = e.clientY - dom.offsetTop;
+    window.addEventListener('mousemove', handleMouse, false);
+  }, false)
+
+  window.addEventListener('mouseup', function () {
+    window.removeEventListener('mousemove', handleMouse, false);
+  }, false)
+
+  //鼠标移动事件
+  function handleMouse(e) {
+
+    console.log(dom.getBoundingClientRect());
+    let l = e.clientX - oneClickX, t = e.clientY - oneClickY
+    if (l < 0) {
+      l = 0
+    } else if (l <= ww - dom.clientWidth) {
+      dom.style.left = (e.x - oneClickX) + 'px';
+    }
+    if (t < 0) {
+      t = 0
+    } else if (t <= hh - dom.clientHeight) {
+      dom.style.top = (e.y - oneClickY) + 'px';
+    }
+
+  }
+</script>
+</html>
